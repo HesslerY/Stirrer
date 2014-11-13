@@ -69,7 +69,7 @@ grid()
 
 
 
-df=10
+df=100
 nfx=zeros((mc,nf-df))
 nfy=zeros((mc,nf-df))
 nfz=zeros((mc,nf-df))
@@ -85,5 +85,25 @@ for i in range(mc):
 plot(f[:-df]/1e6,nfx.mean(axis=0))
 plot(f[:-df]/1e6,nfy.mean(axis=0))
 plot(f[:-df]/1e6,nfz.mean(axis=0))
+grid()
+
+
+
+df=100
+npx=zeros((nf))
+npy=zeros((nf))
+npz=zeros((nf))
+
+for l in range(nf):
+    ax=corrcoef(abs(FFTEt[:,:,l,0]))
+    ay=corrcoef(abs(FFTEt[:,:,l,1]))
+    az=corrcoef(abs(FFTEt[:,:,l,2]))
+    npx[l]=mc**2/sum(abs(ax)**2)
+    npy[l]=mc**2/sum(abs(ay)**2)
+    npz[l]=mc**2/sum(abs(az)**2)
+
+plot(f/1e6,npx)
+plot(f/1e6,npy)
+plot(f/1e6,npz)
 grid()
 
