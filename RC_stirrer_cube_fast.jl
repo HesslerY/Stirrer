@@ -113,6 +113,7 @@ for i=1:nphi
       end
     end
   end
+println("Pos $i/$nphi")
 end
 npzwrite("Estirrerfast_cube$n_paddles.npz", ["Et" => Et, "t" => t])
 
