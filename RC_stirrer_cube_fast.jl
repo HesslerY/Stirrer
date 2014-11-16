@@ -9,8 +9,8 @@ const mu0 = 4*pi*1e-7
 const eps0 = 1/(mu0*c^2)
 epsr=1
 #simulation parameters
-const Lt=.1e-6
-const freq=1e9
+const Lt=.5e-6
+const freq=2e9
 
 L=8.7
 l=3.7
@@ -20,7 +20,7 @@ dmax=Lt*c
 order=int(round(dmax/minimum([L;l;h]))+1)
 const w=2*pi*freq  # omega
 const k=w/c     # wave number
-const N=int(3*Lt*freq)
+const N=int(5*Lt*freq)
 const t=linspace(Lt/N,Lt,N)
 
 
@@ -109,12 +109,12 @@ for i=1:nphi
           end
         end
         Et[xxx,yyy,zzz,i,:,:]=E
-        println("$xxx/$nx, $yyy/$ny, $zzz/$nz")
+        println("$xxx $yyy $zzz")
       end
     end
   end
 end
-npzwrite("Estirrerfast_MC$n_paddles.npz", ["Et" => Et, "t" => t])
+npzwrite("Estirrerfast_cube$n_paddles.npz", ["Et" => Et, "t" => t])
 
 
 
