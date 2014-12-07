@@ -79,6 +79,7 @@ for i=1:nphi
       POS=vcat(POS,POSp[U,:])
     end
   end
+  println("Pos. $i/$nphi, images created")
   numberofimages=length(POS[:,1])
   #field computation
   for xxx=1:nx
@@ -113,7 +114,6 @@ for i=1:nphi
       end
     end
   end
-println("Pos $i/$nphi")
 end
 npzwrite("Estirrerfast_cube$n_paddles.npz", ["Et" => Et, "t" => t])
 
